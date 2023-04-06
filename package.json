@@ -14,12 +14,17 @@
   },
   "scripts": {
     "build": "",
+    "pretest": "npm run eslin",
     "test": "jest --verbose --coverage",
-    "eslint": "eslint --fix --ext .js src/ test/"
+    "eslint": "eslint --fix --ext .js test/"
   },
   "dependencies": {
     "chalk": "5.2.0",
     "eslint": "^8.37.0",
     "jest": "^29.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2"
   }
 }
