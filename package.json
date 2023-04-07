@@ -18,8 +18,10 @@
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
   },
   "scripts": {
-    "test": "jest",
-    "md-links": "node -e \"require('./index.js')()\""
+    "test": "jest --verbose --coverage",
+    "eslint": "eslint *.js test/",
+    "pretest": "npm run eslint",
+     "md-links": "node -e \"require('./index.js')()\""
   },
   "devDependencies": {
     "eslint": "^8.37.0",
