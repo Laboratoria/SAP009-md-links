@@ -2,38 +2,34 @@
 import fetch from "node-fetch";
 
 function extraiLinks(arrLinks) {
-    return arrLinks.map((objetoLink) => Object.values(objetoLink).join())
-}
-
-async function checaStatus (listaURLs) {
-    const arrStatus = await Promise
-    .all(
-    listaURLs.map(async(url) => {
-        try {
-        const response = await fetch(url)
-        return response.status;
-        } catch (erro) {
-            return manejaErros(erro);
-        }
-       
-    }) 
-    )
-    return arrStatus;
-}
-
-function manejaErros (erro) {
-    if (erro.code === 'ENOTFOUND') {
-        return 'link não encontrado';
+    return arrLinks.map((objetoLink) => Object.values(objetoLink).join());
+  }
+  
+  function checaStatus(listaURLs) {
+    return Promise.all(
+      listaURLs.map((url) => {
+        return fetch(url)
+          .then((response) => response.status)
+          .catch((erro) => manejaErros(erro));
+      })
+    );
+  }
+  
+  function manejaErros(erro) {
+    if (erro.code === "ENOTFOUND") {
+      return "link não encontrado";
     } else {
-        return 'ocorreu algum erro';
+      return "ocorreu algum erro";
     }
-}
-export default async function listaValidada(listaDeLinks){
+  }
+  
+  export default function listaValidada(listaDeLinks) {
     const links = extraiLinks(listaDeLinks);
-    const status = await checaStatus(links);
-   return listaDeLinks.map((objeto, indice) => ({
-    ...objeto,
-    status: status[indice]
-   })
-   )
-}
+    return checaStatus(links).then((status) =>
+      listaDeLinks.map((objeto, indice) => ({
+        ...objeto,
+        status: status[indice],
+      }))
+    );
+  }
+  
