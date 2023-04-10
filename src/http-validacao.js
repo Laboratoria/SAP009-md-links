@@ -1,5 +1,5 @@
-
 import fetch from "node-fetch";
+
 
 function extraiLinks(arrLinks) {
     return arrLinks.map((objetoLink) => Object.values(objetoLink).join());
@@ -17,11 +17,12 @@ function extraiLinks(arrLinks) {
   
   function manejaErros(erro) {
     if (erro.code === "ENOTFOUND") {
-      return "link não encontrado";
+        return "link não encontrado";
     } else {
       return "ocorreu algum erro";
     }
   }
+ 
   
   export default function listaValidada(listaDeLinks) {
     const links = extraiLinks(listaDeLinks);
