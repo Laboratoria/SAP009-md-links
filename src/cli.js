@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import fs from 'fs';
 import extrairLinksDoArquivo from "../src/index.js";
- import listaValidada from "../src/http-validacao.js";
+import listaValidada from "../src/http-validacao.js";
 
 const caminho = process.argv; //mudar para path?
 
