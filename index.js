@@ -9,13 +9,20 @@ function lerArquivo(pathFile){
     // console.log(data);
     if (err) throw err;
 
-    const defaultRegex = /\[\w+.\w+\]\(\w+.+\)/gmi;
+    const defaultRegex = /\[\w+.\w+\]\(\w+.+\)/gmi; 
     const searchLinks = data.match(defaultRegex);
-    console.log(searchLinks);
+
     searchLinks.forEach(link => {
-      console.log(link);
+      const removeItens = link.replace(')','').replace('[','');
+      const split = removeItens.split('](');
+      const newObj = {
+        href: split[1],
+        text: split[0],
+        file: pathFile,
+      }
+      console.log(newObj.file + ' ' + newObj.href + ' ' + newObj.text);
     });
   });
 }
 
-lerArquivo('./folder/arquiv.md');
+lerArquivo('README.md');

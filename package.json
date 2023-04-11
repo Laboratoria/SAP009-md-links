@@ -1,5 +1,8 @@
 {
-  "name": "md-links",
+  "name": "md-links-lab",
+  "bin": {
+    "md-links": "cli.js"
+  },
   "version": "0.1.0",
   "description": "Projeto 4 da Laboratoria - Md Links",
   "keywords": [
@@ -20,11 +23,11 @@
   "scripts": {
     "test": "jest --verbose --coverage",
     "eslint": "eslint *.js test/",
-    "pretest": "npm run eslint",
-     "md-links": "node -e \"require('./index.js')()\""
+    "pretest": "npm run eslint"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
     "jest": "^29.5.0"
   }
+  
 }
