@@ -24,4 +24,5 @@ Para trabalhar com regex, é necessário conhecer a sintaxe e a utilização cor
 
 O Node.js é uma plataforma versátil e completa, capaz de oferecer diversas funcionalidades para o desenvolvimento de aplicações em JavaScript. Com o uso de módulos, Babel e regex, é possível otimizar o desenvolvimento e obter resultados mais eficientes e escaláveis. É fundamental estar sempre atualizado sobre essas tecnologias e conhecer as melhores práticas para utilizá-las de forma efetiva.
 [Teste de retorno 400](https://httpstat.us/404).
+[Teste de retorno 400](https://httpstat.us/404).
 [gatinho salsicha](https://gatinhosalsicha.com.br/)
