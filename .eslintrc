@@ -6,3 +6,5 @@
     "ecmaVersion": 8
   }
 }
+
+//com a configuração para o linter. Este arquivo contém uma configuração básica para ESLint, se quiser colocar regras adicionais como Airbnb, você deverá modificar este arquivo.

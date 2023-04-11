@@ -3,3 +3,6 @@
 .nyc_output/
 coverage/
 node_modules/
+
+
+//para ignorar o node_modules e outras pastas que não devem ser incluídas no controle de versão (git).
