@@ -1,5 +1,5 @@
 # Markdown Links
-//com descrição do módulo, instruções de instalação e uso, documentação da API e exemplos. Tudo que for relevante para qualquer desenvolvedora saber como utilizar a sua biblioteca sem inconvenientes.
+
 ## Índice
 
 * [1. Prefácio](#1-prefácio)

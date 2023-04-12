@@ -1,17 +1,17 @@
-#Projeto para Análise de Arquivos Markdown
+# Projeto para Análise de Arquivos Markdown
 Este projeto tem como objetivo criar uma ferramenta de linha de comando (CLI) e uma biblioteca em JavaScript que permita a leitura e análise de arquivos no formato [Markdown](https://pt.wikipedia.org/wiki/Markdown). A ferramenta deve verificar se existem links quebrados ou inválidos, além de fornecer algumas estatísticas sobre o arquivo.
 
-####Tecnologias utilizadas
+#### Tecnologias utilizadas
 •	[Node.js](https://nodejs.org/pt-br/)
 •	JavaScript
-####Funcionalidades
+#### Funcionalidades
 A ferramenta deve ser capaz de:
 •	Ler um arquivo no formato Markdown
 •	Identificar os links presentes no arquivo
 •	Verificar se os links estão quebrados ou inválidos
 •	Mostrar algumas estatísticas sobre o arquivo, como a quantidade total de links e a quantidade de links quebrados
 A biblioteca em JavaScript deve ser modular e permitir a utilização das funcionalidades mencionadas acima em outros projetos.
-####Instruções para instalação e uso
+#### Instruções para instalação e uso
 Para utilizar a ferramenta, é necessário ter o Node.js instalado no computador. Em seguida, é preciso seguir os seguintes passos:
 1.	Clonar o repositório do projeto para o computador
 2.	Na pasta raiz do projeto, executar o comando npm install para instalar as dependências necessárias
