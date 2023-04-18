@@ -1,35 +1,41 @@
 const fs = require('fs');
+const chalk = require('chalk');
 
 function mdLinks(pathFile){
 
   return new Promise((resolve, reject) => {
-    const fileExists = fs.existsSync(pathFile); //funções do fs p/ verificar infos sobre arquivos.
-    const fileSize = fs.statSync(pathFile).size;
+    
+    const mdExtension = pathFile.match(/\.[0-9a-z]+$/i)[0];
 
-    if(fileExists === false || fileSize === 0){
-      reject(chalk.red('\u2717') + ' ' + `O arquivo: ${chalk.red(pathFile)} está vazio ou não existe.`);
+    if(fs.existsSync(pathFile) === false || fs.statSync(pathFile).size === 0){
+      reject(chalk.red('\u2717') + ' ' + chalk.grey(`O arquivo: ${chalk.red(pathFile)} não existe ou é vazio.`));
+    }
+    if(mdExtension !== '.md'){
+      reject(chalk.red('\u2717') + ' ' + chalk.grey(`O arquivo: ${chalk.red(pathFile)} não possui extensão .md!`));
     }
     else{
       fs.readFile(pathFile, 'utf8', (err, data) => {
-        if (err) throw err;
-        const defaultRegex = /\[\w+.\w+\]\(\w+.+\)/gmi; 
+        const defaultRegex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm; 
         const searchLinks = data.match(defaultRegex);
+        
+        if(searchLinks !== null){
+          const linksArray = searchLinks.map(link => {
+            const removeItens = link.replace(/.$/,'').replace(/^./,'');
+            const splitItens = removeItens.split('](');
 
-        const linksArray = searchLinks.map(link => {
-          const removeItens = link.replace(')','').replace('[','');
-          const split = removeItens.split('](');
-          const newObj = {
-            href: split[1],
-            text: split[0],
-            file: pathFile,
-          }
-          return newObj;
-        });
-        resolve(linksArray);
+            const newObject = {
+              href: splitItens[1],
+              text: splitItens[0],
+              file: pathFile,
+            }
+            return newObject;
+          });
+          resolve(linksArray);
+        } else {
+          console.log(chalk.red("\u2717") + ' ' + chalk.red('Não há links no arquivo!'));
+        }
       });
     }
   });
 }
-  
 module.exports = mdLinks;
-
