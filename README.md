@@ -1,4 +1,4 @@
-# Markdown Links - ferramenta de linha de comando (CLI) e sua própria biblioteca.
+# Markdown Links - ferramenta de linha de comando (CLI) e sua biblioteca.
 
 Quarto projeto desenvolvido para o bootcamp da [@Laboratória](https://www.laboratoria.la/br) O projeto Markdown Links tem como foco BackEnd (NodeJS e JavaScript) e identifica links em arquivos markdown e seus respectivos status https. Pode ser executado através de CLI.
 
@@ -27,10 +27,11 @@ Quarto projeto desenvolvido para o bootcamp da [@Laboratória](https://www.labor
 ## Índice
 
 * [1. Prefácio](#1-prefacio) 🗒️
-* 
-* [2. Terminal](#5-Terminal)💻
-* [3. Testes](#6-testes) 📊
-* [4. Checklists de Objetivos Alcançados](#7-checklist-de-objetivos-alcançados) 🏆
+* [2. Fluxograma](#2-fluxograma)
+* [3. Instalação](#3-Instalação)
+* [4. Terminal e seus comandos](#4-Terminal-e-seus-comandos)💻
+* [5. Testes](#5-testes) 📊
+* [6. Checklists de Objetivos Alcançados](#6-checklist-de-objetivos-alcançados) 🏆
 
 ***
 
@@ -40,8 +41,29 @@ Markdown é usada em muitas plataformas que manipulam texto (GitHub, fórum, blo
 
 Nesse projeto, criou-se uma ferramenta, usando Node.js, que le e analise arquivos no formato Markdown, para verificar os arquivos que contenham links e mostrar algumas estatísticas. Neste projeto, foi criado uma ferramenta de linha de comando (CLI) assim como a sua própria biblioteca (library) em Javascript usando o Node.js.
 
-## Fluxograma de estudos
+## Fluxograma 
 
 <div align="center">
  <img alt="fluxograma" width="550" src="https://user-images.githubusercontent.com/30864314/233381730-1e9bc58f-c616-45fe-8811-75156a51cf0c.png" /><br>
+  Fluxograma de estudos e tomada de decisões.
 </div>
+
+***
+## Instalação
+
+Em andamento.
+
+***
+## Terminal e seus comandos
+
+Em andamento.
+
+***
+## Testes
+
+Em andamento.
+
+***
+## Checklists de Objetivos Alcançados
+
+Em andamento.
