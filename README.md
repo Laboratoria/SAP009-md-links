@@ -11,11 +11,13 @@ Quarto projeto desenvolvido para o bootcamp da [@Laboratória](https://www.labor
   <img align="center" alt="Rafa-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="vscode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
   <img  align="center" alt="Node" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
-  
+  <br>
+  <br>
+  <br>
   Desenvolvido por 
   <br>
   <br>
-  Ana Leticia B. Prince <br> 
+  ANA LETICIA B. PRINCE <br> 
   [Linkedin](https://www.linkedin.com/in/analeticiabacha) | [Github](https://github.com/analeticiabacha)
   <br>
   <br>
