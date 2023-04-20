@@ -26,7 +26,22 @@ Quarto projeto desenvolvido para o bootcamp da [@Laboratória](https://www.labor
 
 ## Índice
 
-* [1. Definição de Produto](#1-definicao-de-produto) 🗒️
+* [1. Prefácio](#1-prefacio) 🗒️
+* 
 * [2. Terminal](#5-Terminal)💻
 * [3. Testes](#6-testes) 📊
 * [4. Checklists de Objetivos Alcançados](#7-checklist-de-objetivos-alcançados) 🏆
+
+***
+
+## Prefácio
+
+Markdown é usada em muitas plataformas que manipulam texto (GitHub, fórum, blogs e etc) e é muito comum encontrar arquivos com este formato em qualquer repositório (começando pelo tradicional README.md). Os arquivos Markdown normalmente contém links que podem estar quebrados, ou que já não são válidos, prejudicando muito o valor da informação que está ali.
+
+Nesse projeto, criou-se uma ferramenta, usando Node.js, que le e analise arquivos no formato Markdown, para verificar os arquivos que contenham links e mostrar algumas estatísticas. Neste projeto, foi criado uma ferramenta de linha de comando (CLI) assim como a sua própria biblioteca (library) em Javascript usando o Node.js.
+
+## Fluxograma de estudos
+
+<div align="center">
+ <img alt="fluxograma" width="550" src="https://user-images.githubusercontent.com/30864314/233381730-1e9bc58f-c616-45fe-8811-75156a51cf0c.png" /><br>
+</div>
