@@ -1,6 +1,6 @@
 # Markdown Links - ferramenta de linha de comando (CLI) e sua própria biblioteca.
 
-Quarto projeto desenvolvido para o bootcamp da @Laboratoria. O projeto Markdown Links tem como foco BackEnd (NodeJS e JavaScript) e identifica links em arquivos markdown e seus respectivos status https. Pode ser executado através de CLI.
+Quarto projeto desenvolvido para o bootcamp da [@Laboratória](https://www.laboratoria.la/br) O projeto Markdown Links tem como foco BackEnd (NodeJS e JavaScript) e identifica links em arquivos markdown e seus respectivos status https. Pode ser executado através de CLI.
 
 ***
 <div align="center">
