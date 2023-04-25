@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/Stellazen/SAP009-md-links.git"
   },
-  "author": "Stella Zen",
+  "author": "Stella Zen", 
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Stellazen/SAP009-md-links/issues"
