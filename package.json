@@ -22,8 +22,8 @@
   },
   "scripts": {
     "test": "jest --verbose --coverage",
-    "eslint": "eslint *.js test/"
-
+    "eslint": "eslint *.js test/",
+    "pretest": "npm run eslint"
   },
   "devDependencies": {
     "eslint": "^8.37.0",

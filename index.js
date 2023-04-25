@@ -54,6 +54,7 @@ function validate (arrObjsLinks){
   return Promise.all(arrObjsLinks.map((eachObj) => {
       return fetch(eachObj.href)
         .then((result) => {
+          // eslint-disable-next-line
           const newObjFetch = {...eachObj, status: result.status, ok: result.ok};
           return newObjFetch;
         })
