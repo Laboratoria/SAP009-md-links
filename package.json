@@ -8,5 +8,32 @@
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
+  },
+  "description": "## Índice",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/PolyanaCristinaFeitoza/SAP009-md-links)"
+  },
+  "author": "Polyana Feitoza",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.20.7",
+    "babel": "^6.23.0",
+    "eslint": "^8.39.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-env": "^7.21.4"
   }
 }
