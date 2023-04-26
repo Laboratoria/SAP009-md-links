@@ -15,7 +15,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,17 @@
   },
   "author": "keila-oliveira",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Keilaoliveira0112/SAP009-md-links/issues"
   },
   "homepage": "https://github.com/Keilaoliveira0112/SAP009-md-links#readme",
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-transform-arrow-functions": "^7.20.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "eslint": "^8.39.0"
   }
 }
