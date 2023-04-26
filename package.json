@@ -1,12 +1,27 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "description": "MD Links - Projeto Laboratória",
+  "main": "index.js",
+  "type": "module",
   "engines": {
     "node": ">=16.x"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:talitamsx/SAP009-md-links.git"
+  },
+  "author": "Talita Martins",
+  "license": "ISC",
   "bootcamp": {
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
   }
 }
