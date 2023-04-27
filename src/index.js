@@ -11,7 +11,8 @@ function extraiLinks(texto) {
   // map percorre o array de capturas e retorna um array com os resultados
   // pegando as capturas índice 1 e 2 que são os dois regex montados acima
   const resultados = capturas.map(captura => ({[captura[1]]: [captura[2]]}))
-  console.log(resultados);
+  // identificando se o array de links é vazio para enviar um aviso
+  return resultados.length !== 0 ? resultados : 'não há links no arquivo';
 }
 
 function trataErro(erro) {
@@ -22,7 +23,7 @@ function trataErro(erro) {
 // faz a leitura de todo o conteúdo do arquivo especificado ao chamar a função
 function pegaArquivo(caminhoDoArquivo) {
   const encoding = 'utf-8';
-  fs.promises
+  return fs.promises
     .readFile(caminhoDoArquivo, encoding)
     // função assíncrona pq a leitura de um file grande pode demorar
     // e a aplicação deve seguir rodando até chegar o resultado
@@ -30,11 +31,10 @@ function pegaArquivo(caminhoDoArquivo) {
     .catch(trataErro)
 }
 
-pegaArquivo('./arquivo/texto.md')
+export default pegaArquivo
 
 // REGEX
 // pegando tudo que esá dentro de colchetes
 // \[([ˆ[\]]*?)\]
-
 // pegando tudo que esá dentro dos parenteses, que são os links
 // \((https?:\/\/[ˆ\s?#.].[ˆ\s]*)\)
