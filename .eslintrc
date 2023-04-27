@@ -3,6 +3,11 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },  
+  "rules": {
+    // configurações de regras de linting
   }
 }
+
