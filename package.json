@@ -8,7 +8,9 @@
     "node": ">=16.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cli": "node ./src/cli.js ./arquivo/texto.md",
+    "cli:valida": "node ./src/cli.js ./arquivo/texto.md --valida"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
   },
   "dependencies": {
-    "chalk": "^5.2.0"
+    "chalk": "^5.2.0",
+    "eslint": "^8.39.0"
   }
 }

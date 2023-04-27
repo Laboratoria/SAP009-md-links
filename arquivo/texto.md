@@ -1,14 +1,6 @@
-[Markdown](https://pt.wikipedia.org/wiki/Markdown) é uma linguagem de marcação
-muito popular entre os programadores. É usada em muitas plataformas que
-manipulam texto (GitHub, fórum, blogs e etc) e é muito comum encontrar arquivos
-com este formato em qualquer repositório (começando pelo tradicional
-`README.md`).
+A interface File provê informações sobre arquivos e permite ao JavaScript  a acessar seu conteúdo.
 
-Os arquivos `Markdown` normalmente contém _links_ que podem estar
-quebrados, ou que já não são válidos, prejudicando muito o valor da
-informação que está ali.
+São geralmente recuperados a partir de um objeto [FileList](https://developer.mozilla.org/pt-BR/docs/Web/API/FileList) que é retornado como resultado da seleção, pelo usuário, de arquivos através do elemento [<input>](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input), a partir do objeto [DataTransfer](https://developer.mozilla.org/pt-BR/docs/Web/API/DataTransfer) utilizado em operações de arrastar e soltar, ou a partir da API `mozGetAsFile()` em um [HTMLCanvasElement](https://developer.mozilla.org/pt-BR/docs/Web/API/HTMLCanvasElement). Em Gecko, códigos com privilégiios podem criar objetos File representando qualquer arquivo local sem a intereção do usuário (veja [Implementation notes](https://developer.mozilla.org/pt-BR/docs/Web/API/File#implementation_notes) para mais informações.).
+[Teste de retorno 400](https://httpstat.us/404).
 
-Uma comunidade open source nos propôs criar uma ferramenta, usando
-[Node.js](https://nodejs.org/), que leia e analise arquivos no formato
-`Markdown`, para verificar os arquivos que contenham links e mostrar algumas
-estatísticas.
+//[gatinho salsicha](http://gatinhosalsicha.com.br/)
