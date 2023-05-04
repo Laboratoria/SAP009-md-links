@@ -7,18 +7,18 @@ import { listaValidada, statusBroken } from './http-validacao.js';
 const caminho = process.argv;
 
 async function imprimeLista(valida, resultado = '') {
-  if (valida) {
+  if (caminho.includes('--stats') && caminho.includes('--validate')) {
+    const linksQuebrados = statusBroken(resultado);
+    console.log(`links quebrados: ${linksQuebrados.length}`);
+  } else if (caminho.includes('--stats')) {
+    const linksUnicos = new Set(resultado.map((link) => link.href));
+    console.log(chalk.bgBlueBright(` total de links: ${resultado.length} `));
+    console.log(chalk.bgBlue(` links únicos:() ${linksUnicos.size} `));
+  } else if (valida) {
     const linha = await listaValidada(resultado);
     linha.forEach((link) => {
       console.log(`${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`);
     });
-  } else if (caminho.includes('--stats')) {
-    const linksUnicos = new Set(resultado.map((link) => link.href));
-    console.log(chalk.bgBlueBright(` total de links: ${resultado.length} `));
-    console.log(chalk.bgBlue(` links únicos: ${linksUnicos.size} `));
-  } else if (caminho.includes('--stats' && '--validate')) {
-    const linksQuebrados = statusBroken(resultado);
-    console.log(`links quebrados: ${linksQuebrados.length}`);
   } else {
     resultado.forEach((link) => {
       console.log(`${link.file} | ${link.href} | ${link.text}`);
