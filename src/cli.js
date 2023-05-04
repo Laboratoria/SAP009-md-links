@@ -6,18 +6,20 @@ import { listaValidada, statusBroken } from './http-validacao.js';
 
 const caminho = process.argv;
 
-async function imprimeLista(valida, resultado = '') {
+function imprimeLista(valida, resultado = '') {
   if (caminho.includes('--stats') && caminho.includes('--validate')) {
-    const linksQuebrados = statusBroken(resultado);
-    console.log(`links quebrados: ${linksQuebrados.length}`);
+    statusBroken(resultado).then((linksQuebrados) => {
+      console.log(`links quebrados: ${linksQuebrados.length}`);
+    });
   } else if (caminho.includes('--stats')) {
     const linksUnicos = new Set(resultado.map((link) => link.href));
     console.log(chalk.bgBlueBright(` total de links: ${resultado.length} `));
-    console.log(chalk.bgBlue(` links únicos:() ${linksUnicos.size} `));
+    console.log(chalk.bgBlue(` links únicos: ${linksUnicos.size} `));
   } else if (valida) {
-    const linha = await listaValidada(resultado);
-    linha.forEach((link) => {
-      console.log(`${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`);
+    listaValidada(resultado).then((linha) => {
+      linha.forEach((link) => {
+        console.log(`${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`);
+      });
     });
   } else {
     resultado.forEach((link) => {
