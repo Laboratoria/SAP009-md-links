@@ -1,42 +1,30 @@
-import chalk from "chalk";
+import chalk from 'chalk';
 
-function extraiLinks (arrLinks){
-   return arrLinks.map((objetoLink) => Object.values(objetoLink).join())
+function extraiLinks(arrLinks) {
+  return arrLinks.map((objetoLink) => objetoLink.href);
 }
 
-//documentação Node
-// async function checkStatus (listaURLs) {
-//     const arrStatus = await Promise
-//     .all(
-//             listaURLs.map(async (url) => {
-//             const response = await fetch(url)
-//             return response.status;
-//     })
-//     )
-//     return arrStatus;
-// }
-
-function checkStatus (listaURLs) {
-    const arrStatus = Promise
-    .all(
-            listaURLs.map((url) => {
-            return fetch(url).then((response) => {
-                return `${response.status} - ${response.statusText}`;
-            })
-            .catch ((erro) => {
-                return manejaErro(erro)                
-            });         
-    })
-    )
-    return arrStatus;
+function manejaErro(erro) {
+  if (erro.cause.code === 'ENOTFOUND') {
+    return (chalk.red('Link não encontrado'));
+  }
+  return 'Ocorreu algum erro';
 }
 
-function manejaErro(erro){
-   if(erro.cause.code === 'ENOTFOUND') {
-    return 'Link não encontrado';
-   } else {
-    return 'Ocorreu algum erro';
-   }
+function checkStatus(listaURLs) {
+  const arrStatus = Promise.all(
+    listaURLs.map((url) => fetch(url)
+      .then((response) => {
+        if (response.status === 200) {
+          return (chalk.green.bold(`${response.status} | ${'OK'}`));
+        } if (response.status !== 200) {
+          return (chalk.red(`${response.status} | ${'FAIL'}`));
+        }
+        return `${response.status} - ${response.statusText}`;
+      })
+      .catch((erro) => manejaErro(erro))),
+  );
+  return arrStatus;
 }
 
 // export default async function listaValidada (listaDeLinks) {
@@ -44,13 +32,25 @@ function manejaErro(erro){
 //     const status = await checkStatus(links);
 //     return status;
 // }
+// export function statusBroken(arrStatus){
+//     const linksBroken = checkStatus(arrStatus)
+//     arrStatus.map(response) => {
+//         .then(response.status !==200) => {
+//             linksBroken.join()
+//         }
+//     }
+//     return linksBroken.length
+// }
 
-export default function listaValidada (listaDeLinks) {
-    const links = extraiLinks(listaDeLinks);
-    return checkStatus(links).then((status) => {
-        return listaDeLinks.map((objeto, indice) => ({
-            ...objeto,
-            status: status[indice]
-        }))
-    });    
+
+
+export default function listaValidada(listaDeLinks) {
+  const links = extraiLinks(listaDeLinks);
+  return checkStatus(links)
+    .then((status) => listaDeLinks.map((objeto, indice) => ({
+      ...objeto,
+      status: status[indice],
+    }))).catch((error) => {
+      console.error(error);
+    });
 }
