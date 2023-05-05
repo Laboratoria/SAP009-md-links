@@ -24,11 +24,11 @@ if (options.validate && options.stats) {
               linksQuebrados.push(item.link);
             }
           })
-          .catch(() => {
-            linksQuebrados.push(item.link);
+          .catch((err) => {
+            console.log(err);
           })
       ))
-        .then(() => {
+        .then(() => { //Trata o resultado do promise.all quando todas elas estiverem resolvidas
           console.log(`Total: ${informacoes.length}`);
           console.log(`Unique: ${links.length}`);
           console.log(`Broken: ${linksQuebrados.length}`);
@@ -37,7 +37,7 @@ if (options.validate && options.stats) {
           console.log(err);
         });
     })
-    .catch((err) => {
+    .catch((err) => { //Trata o erro da função mdLinks
       console.log(err);
     });
 
@@ -66,5 +66,14 @@ if (options.validate && options.stats) {
       console.log(`Total: ${informacoes.length}`);
       console.log(`Unique: ${links.length}`);
     })
-  }
+} else {
+  mdLinks(caminhoDoArquivo)
+    .then((informacoes) => {
+      informacoes.map((item) => {
+        console.log(`${chalk.blue(item.arquivo)} ${chalk.cyan(item.link)} ${chalk.green(item.texto)} `);
+      })
 
+    }).catch((err) => {
+        console.log(err);
+    })
+}
