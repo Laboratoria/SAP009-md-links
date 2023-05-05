@@ -8,5 +8,39 @@
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
+  },
+  "description": "## Índice",
+  "main": "index.js",
+  "directories": {
+    "test": "jest"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "",
+    "start": "node src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/PolyanaCristinaFeitoza/SAP009-md-links)"
+  },
+  "author": "polyana-feitoza",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "md-links": "./src/cli.js"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.20.7",
+    "babel": "^6.23.0",
+    "chalk": "^5.2.0",
+    "eslint": "^8.39.0",
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-env": "^7.21.4",
+    "jest": "^29.5.0"
   }
 }
