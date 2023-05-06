@@ -15,8 +15,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "test": "jest",
+    "build": "babel src -d lib",
+    "start": "node src/cli.js"
   },
   "repository": {
     "type": "git",
@@ -24,16 +25,23 @@
   },
   "author": "Stella Zen",
   "license": "ISC",
+  "type": "module",
+  "bin": {
+    "md-links": "./src/cli.js"
+  },
   "bugs": {
     "url": "https://github.com/Stellazen/SAP009-md-links/issues"
   },
   "homepage": "https://github.com/Stellazen/SAP009-md-links#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.5",
+    "@babel/preset-env": "^7.21.5",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.39.0"
   },
   "dependencies": {
     "chalk": "^5.2.0",
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "node-fetch": "^3.3.1"
   }
 }

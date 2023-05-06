@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs';
 
-const extrairInformacoes = (string, arquivo) => {
+export const extrairInformacoes = (string, arquivo) => {
     const informacoes = string.split('](');
     const texto = informacoes[0].replace('[','');
     const link = informacoes[1].replace(')','');

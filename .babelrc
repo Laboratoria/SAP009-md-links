@@ -1,0 +1,13 @@
+{
+    "presets": ["@babel/preset-env"],
+    "env": {
+        "test": {
+
+            "plugins": [
+                "@babel/plugin-transform-arrow-functions",
+                "@babel/plugin-transform-modules-commonjs"
+            ]    
+        }
+    }
+
+}
