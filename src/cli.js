@@ -20,13 +20,18 @@ if(options.validate){
         informacoes.map((item) => {
             fetch(item.href)
             .then((res) => {
-                const status = res.status == 200 ? chalk.blue('ok') : chalk.red('fail');
-                console.log(`${chalk.blue(item.file)} ${chalk.green(item.href)} ${chalk.bgMagenta(status)} ${chalk.bgGreen(res.status)} ${chalk.cyan(item.text)}`);
+                const status = res.status 
+                if(status === 200){
+                    console.log(`${chalk.blue(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgYellow('ok')} ${chalk.bgYellowBright(res.status)}`)
+                }else{
+                    console.log(`${chalk.blue(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgRed('fail')} ${chalk.bgRedBright(res.status)}`)
+                }
+                // === 200 ? chalk.blue('ok') : chalk.red('fail');
+                // console.log(`${chalk.blue(item.file)} ${chalk.cyanBright(item.href)} ${chalk.bgMagenta(status)} ${chalk.bgGreen(res.status)} ${chalk.greenBright(item.text)}`);
             })
             .catch((err) => {
                 console.log(err);
             })
-        console.log(`${chalk.magenta(item.file)} ${chalk.bgCyanBright(item.href)} ${chalk.green(item.text)}`)
         })
     }).catch((err) => {
         console.log(err);
@@ -36,12 +41,12 @@ if(options.validate){
     .then((informacoes) => {
         const links = informacoes.map((item) => item.href);
         console.log(`total:${informacoes.length}`);
-        console.log(`unique:${informacoes.length}`);
+        console.log(`unique:${links.length}`);
     }).catch((err)=>{
         console.log(err);
     });
 }else if(options.validate && options.stats){
-    mdLinks(caminhoDoArquivo, {stats:true})
+    mdLinks(caminhoDoArquivo, options )
     .then((informacoes) => {
         const links = informacoes.map((item) => item.href);
         console.log(`total:${informacoes.length}`);
@@ -53,7 +58,7 @@ if(options.validate){
     mdLinks(caminhoDoArquivo,)
     .then((informacoes) => {
         informacoes.map((item) => {
-        console.log(`${chalk.magenta(item.file)} ${chalk.bgCyanBright(item.href)} ${chalk.green(item.text)}`)
+        console.log(`${chalk.magenta(item.file)} ${chalk.cyanBright(item.href)} ${chalk.green(item.text)}`)
         })
     }).catch((err) => {
         console.log(err);
