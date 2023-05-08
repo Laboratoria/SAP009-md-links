@@ -2,23 +2,33 @@
 import chalk from 'chalk';
 import fs from 'fs';
 import extraiLinks from './index.js';
-import { listaValidada, statusBroken } from './http-validacao.js';
+import { calculaStats, listaValidada } from './http-validacao.js';
 
 const caminho = process.argv;
 
 function imprimeLista(valida, resultado = '') {
   if (caminho.includes('--stats') && caminho.includes('--validate')) {
-    statusBroken(resultado).then((linksQuebrados) => {
-      console.log(`links quebrados: ${linksQuebrados.length}`);
+    listaValidada(resultado).then((links) => {
+      const stats = calculaStats(links);
+      console.log(
+        // eslint-disable-next-line prefer-template
+        chalk.bgBlue(` total: ${stats.total} `) + '\n' + chalk.bgBlue(` unique: ${stats.unique} `) + '\n' + chalk.bgBlue(` broken: ${stats.broken} `),
+      );
     });
   } else if (caminho.includes('--stats')) {
-    const linksUnicos = new Set(resultado.map((link) => link.href));
-    console.log(chalk.bgBlueBright(` total de links: ${resultado.length} `));
-    console.log(chalk.bgBlue(` links únicos: ${linksUnicos.size} `));
+    listaValidada(resultado).then((link) => {
+      const stats = calculaStats(link);
+      console.log(
+        // eslint-disable-next-line prefer-template
+        chalk.bgBlue(` total: ${stats.total} `) + '\n' + chalk.bgBlue(` unique: ${stats.unique} `),
+      );
+    });
   } else if (valida) {
     listaValidada(resultado).then((linha) => {
       linha.forEach((link) => {
-        console.log(`${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`);
+        console.log(
+          `${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`,
+        );
       });
     });
   } else {

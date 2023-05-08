@@ -5,7 +5,7 @@ function trataErro(erro) {
   throw new Error(chalk.red(erro.code, 'não há arquivo no diretório'));
 }
 
-export default function extraiLinks(caminhoDoArquivo) {
+function extraiLinks(caminhoDoArquivo) {
   const encoding = 'utf-8';
   const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
   return fs.promises
@@ -21,3 +21,8 @@ export default function extraiLinks(caminhoDoArquivo) {
     })
     .catch(trataErro);
 }
+
+export {
+  extraiLinks,
+  trataErro,
+};

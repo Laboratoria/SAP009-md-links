@@ -28,18 +28,17 @@ function checkStatus(listaURLs) {
   return arrayStatus;
 }
 
-export function statusBroken(listaDeLinks) {
-  const links = extraiLinks(listaDeLinks);
-  const arrayStatus = checkStatus(links);
-  const linksBroken = [];
-  return arrayStatus.then((statusLinks) => {
-    statusLinks.forEach((status, index) => {
-      if (status.includes('FAIL') || status.includes('ENOTFOUND') || status.includes('link não encontrado')) {
-        linksBroken.push(links[index]);
-      }
-    });
-    return linksBroken;
-  });
+export function calculaStats(links) {
+  const total = links.length;
+  const unique = new Set(links.map((link) => link.href)).size;
+  const broken = links.filter((link) => (!link.status.includes('OK'))).length;
+
+  const stats = {
+    total,
+    unique,
+    broken,
+  };
+  return stats;
 }
 
 export function listaValidada(listaDeLinks) {
