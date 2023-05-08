@@ -12,68 +12,44 @@ const options = {
 };
 
 if (options.validate && options.stats) {
-  mdLinks(caminhoDoArquivo, { validate: true })
-    .then((informacoes) => {
-      const links = informacoes.map((item) => item.link);
-      const linksQuebrados = [];
-      //Promise.all() é um método que recebe um array de promessas e retorna uma nova promessa que é resolvida somente quando todas as promessas do array forem resolvidas.
-      Promise.all(informacoes.map((item) =>
-        fetch(item.link)
-          .then((res) => {
-            if (res.status !== 200) {
-              linksQuebrados.push(item.link);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      ))
-        .then(() => { //Trata o resultado do promise.all quando todas elas estiverem resolvidas
-          console.log(`Total: ${informacoes.length}`);
-          console.log(`Unique: ${links.length}`);
-          console.log(`Broken: ${linksQuebrados.length}`);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    })
-    .catch((err) => { //Trata o erro da função mdLinks
-      console.log(err);
-    });
-
-} else if (options.validate) {
-  mdLinks(caminhoDoArquivo, { validate: true })
-    .then((informacoes) => {
-      informacoes.map((item) => {
-        fetch(item.link)
-          .then((res) => {
-            const status = res.status === 200 ? chalk.green('ok') : chalk.red('fail');
-            console.log(`${chalk.blue(item.arquivo)} ${chalk.cyan(item.link)} ${chalk.yellow(status)} ${chalk.yellow(res.status)} ${chalk.green(item.texto)} `);
-          })
-          .catch((err) => {
-            console.log(`${chalk.blue(item.arquivo)} ${chalk.cyan(item.link)} ${chalk.red('fail')} ${chalk.red(err)} ${chalk.green(item.texto)} `);
-          });
-      });
+  mdLinks(caminhoDoArquivo, options)
+    .then((result) => {
+      const links = result.map((item) => item.link);
+      const broken = result.filter((item) => item.status !== 200);
+      console.log(`Total: ${chalk.green(result.length)} \nUnique: ${chalk.green(links.length)} \nBroken: ${chalk.red(broken.length)}`);
     })
     .catch((err) => {
       console.log(err);
     });
-
-} else if (options.stats) {
-  mdLinks(caminhoDoArquivo, { stats: true })
-    .then((informacoes) => {
-      const links = informacoes.map((item) => item.link);
-      console.log(`Total: ${informacoes.length}`);
-      console.log(`Unique: ${links.length}`);
-    })
-} else {
-  mdLinks(caminhoDoArquivo)
-    .then((informacoes) => {
-      informacoes.map((item) => {
-        console.log(`${chalk.blue(item.arquivo)} ${chalk.cyan(item.link)} ${chalk.green(item.texto)} `);
+  }else if(options.validate){
+    mdLinks(caminhoDoArquivo, options)
+      .then((result) =>{
+          result.map((item) => {
+            if(item.status !== 200){
+              console.log(`${chalk.blue(item.arquivo)} ${chalk.cyanBright(item.link)} ${chalk.red(item.texto)} ${chalk.red(item.status)} ${chalk.yellowBright(item.message)}`)
+            }else{
+              console.log(`${chalk.blue(item.arquivo)} ${chalk.cyanBright(item.link)} ${chalk.green(item.texto)} ${chalk.greenBright(item.status)} ${chalk.yellowBright(item.message)}`)
+            }
+          });
+      }).catch((err)=>{
+          console.log(err);
       })
-
-    }).catch((err) => {
+  }else if (options.stats) {
+    mdLinks(caminhoDoArquivo, options)
+      .then((informacoes) => {
+        const links = informacoes.map((item) => item.link);
+        console.log(`Total: ${chalk.green(informacoes.length)} \nUnique: ${chalk.green(links.length)}`);
+      }).catch((err) => {
         console.log(err);
-    })
-}
+      });
+  }else{
+    mdLinks(caminhoDoArquivo, options)
+      .then((informacoes) => {
+        informacoes.map((item) => {
+          console.log(`${chalk.blue(item.arquivo)} ${chalk.cyanBright(item.link)} ${chalk.yellow(item.texto)}`)
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+   

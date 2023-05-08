@@ -14,6 +14,10 @@ describe('extrairInformacoes', () => {
     expect(infos).toEqual({ arquivo, link, texto});
 
   });
+  it('deve retornar um erro quando não receber a string como parâmetro', () => {
+    expect(() => extrairInformacoes()).toThrow('dados inválidos')
+  })
+
 });
 //teste Md-Links
 describe('funcao md-links', () => {
@@ -25,4 +29,14 @@ describe('funcao md-links', () => {
     expect(readFile).toHaveBeenCalledTimes(1);
     expect(readFile).toHaveBeenCalledWith(caminhoDoArquivo, encode, expect.any(Function));
   });
+  it('deve retornar um erro quando não receber parâmetro', () => {
+    expect(() => mdLinks()).toThrow()
+  })
 });
+
+// test('deve ser um erro', () => {
+//     mdLinks("./src/texto.md")
+//     .catch(err => {
+//       expect(err).toEqual("ENOENT: no such file or directory, open './src/texto.md'");
+//     })
+//   })
