@@ -28,7 +28,7 @@ function checkStatus(listaURLs) {
   return arrayStatus;
 }
 
-export function calculaStats(links) {
+function calculaStats(links) {
   const total = links.length;
   const unique = new Set(links.map((link) => link.href)).size;
   const broken = links.filter((link) => (!link.status.includes('OK'))).length;
@@ -41,7 +41,7 @@ export function calculaStats(links) {
   return stats;
 }
 
-export function listaValidada(listaDeLinks) {
+function listaValidada(listaDeLinks) {
   const links = extraiLinks(listaDeLinks);
   return checkStatus(links)
     .then((status) => listaDeLinks.map((objeto, indice) => ({
@@ -49,3 +49,11 @@ export function listaValidada(listaDeLinks) {
       status: status[indice],
     })));
 }
+
+export {
+  extraiLinks,
+  manejaErros,
+  checkStatus,
+  calculaStats,
+  listaValidada,
+};

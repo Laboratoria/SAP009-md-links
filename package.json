@@ -8,7 +8,7 @@
     "node": ">=16.x"
   },
   "bin": {
-    "md-links": "./src/cli.js"
+    "md-links": "./src/index.js"
   },
   "scripts": {
     "test": "jest"
