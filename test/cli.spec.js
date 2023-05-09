@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
+import chalk from 'chalk';
 import { imprimeLista } from '../src/cli';
 
 const spyLog = jest.spyOn(global.console, 'log').mockImplementation();
+jest.mock('chalk', () => ({
+  bgBlue: jest.fn(),
+}));
 
 describe('imprimeLista', () => {
   it('deveria ser uma função', () => {
@@ -32,6 +36,7 @@ describe('imprimeLista', () => {
     }, {
       file: 'arquivo3.md', href: 'http://url3.com', text: 'link3', status: 'OK',
     }];
+    chalk.bgBlue.mockImplementation((cor) => cor);
     imprimeLista(argumentos, arquivos);
     expect(spyLog).toHaveBeenCalledTimes(1);
     expect(spyLog).toHaveBeenCalledWith(expect.stringContaining(`total: ${arquivos.length}`));
@@ -51,9 +56,10 @@ describe('imprimeLista', () => {
         file: 'file2', href: 'https://www.google.com', text: 'google', status: 404,
       },
     ];
+    chalk.bgBlue.mockImplementation((cor) => cor);
     imprimeLista(argumentos, arquivos);
     expect(spyLog).toHaveBeenCalledTimes(arquivos.length);
-    expect(spyLog).toHaveBeenCalledWith('file1 | \u001b[33mhttps://www.example.com\u001b[39m | example | 200');
-    expect(spyLog).toHaveBeenCalledWith('file2 | \u001b[33mhttps://www.google.com\u001b[39m | google | 404');
+    expect(spyLog).toHaveBeenCalledWith('file1 | https://www.example.com | example | 200');
+    expect(spyLog).toHaveBeenCalledWith('file2 | https://www.google.com | google | 404');
   });
 });

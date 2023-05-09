@@ -17,7 +17,7 @@ function imprimeLista(argumentos, resultado) {
   } else if (argumentos.validate) {
     resultado.forEach((link) => {
       console.log(
-        `${link.file} | ${chalk.yellow(link.href)} | ${link.text} | ${link.status}`,
+        chalk.bgBlue(`${link.file} | ${link.href} | ${link.text} | ${link.status}`),
       );
     });
   } else {
