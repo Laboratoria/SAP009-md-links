@@ -1,8 +1,9 @@
 /* eslint-disable prefer-template */
 /* eslint-disable no-undef */
 // import chalk from 'chalk';
-import { extraiLinks, trataErro } from '../src/md-links';
-import { imprimeLista } from '../src/cli';
+import { extraiLinks } from '../src/md-links';
+import { imprimeLista } from '../src/output';
+import { trataErro } from '../src/errors';
 
 describe('extraiLinks', () => {
   it('deve ser uma função', () => {

@@ -1,14 +1,8 @@
 import chalk from 'chalk';
+import { manejaErros } from './errors.js';
 
 function extraiLinks(arrayLinks) {
   return arrayLinks.map((objetoLink) => objetoLink.href);
-}
-
-function manejaErros(erro) {
-  if (erro.cause.code === 'ENOTFOUND') {
-    return (chalk.magenta('link não encontrado'));
-  }
-  return 'ocorreu algum erro';
 }
 
 function checkStatus(listaURLs) {
@@ -52,7 +46,6 @@ function listaValidada(listaDeLinks) {
 
 export {
   extraiLinks,
-  manejaErros,
   checkStatus,
   calculaStats,
   listaValidada,
