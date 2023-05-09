@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import chalk from 'chalk';
+
+// eslint-disable-next-line import/no-cycle
 import { mdLink } from './mdLinks.js';
 
 const parametros = {
@@ -9,12 +10,3 @@ const parametros = {
 };
 
 mdLink(parametros);
-
-function manejaErro(erro) {
-  if (erro.cause.code === 'ENOTFOUND' || 'ENOENT') {
-    return (chalk.red('Link não encontrado'));
-  }
-  return 'Ocorreu algum erro';
-}
-
-export { manejaErro };

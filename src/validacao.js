@@ -1,18 +1,11 @@
 // eslint-disable-next-line import/no-import-module-exports
 import chalk from 'chalk';
 // eslint-disable-next-line import/no-cycle
-import { manejaErro } from './index.js';
+import { manejaErro } from './erros.js';
 
-function extraiLinks(arrLinks) {
+function extrairLinks(arrLinks) {
   return arrLinks.map((objetoLink) => objetoLink.href);
 }
-
-// function manejaErro(erro) {
-//   if (erro.cause.code === 'ENOTFOUND') {
-//     return (chalk.red('Link não encontrado'));
-//   }
-//   return 'Ocorreu algum erro';
-// }
 
 function checkStatus(listaURLs) {
   const arrStatus = Promise.all(
@@ -29,6 +22,7 @@ function checkStatus(listaURLs) {
   );
   return arrStatus;
 }
+
 function calculaStats(links) {
   const total = links.length;
   const unique = new Set(links.map((link) => link.href)).size;
@@ -42,11 +36,16 @@ function calculaStats(links) {
 }
 
 function listaValidada(listaDeLinks) {
-  const links = extraiLinks(listaDeLinks);
+  const links = extrairLinks(listaDeLinks);
   return checkStatus(links).then((status) => listaDeLinks.map((objeto, indice) => ({
     ...objeto,
     status: status[indice],
   })));
 }
 
-export { listaValidada, calculaStats };
+export {
+  listaValidada,
+  calculaStats,
+  checkStatus,
+  extrairLinks,
+};

@@ -1,11 +1,8 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import { imprimeLista } from './cli.js'; 
-import { manejaErro } from './index.js';
-
-// function tratarErro(erro) {
-//   throw new Error(chalk.red(erro.code, 'não há arquivo no diretório'));
-// }
+import { imprimeLista } from './cli.js';
+import { tratarErro } from './erros.js';
+import { listaValidada } from './validacao.js';
 
 function extraiLinks(caminhoArquivo) {
   const encoding = 'utf-8';
@@ -15,15 +12,14 @@ function extraiLinks(caminhoArquivo) {
     .then((texto) => {
       // matchAll método de string / ...expande o obj iteravel
       const capturas = [...texto.matchAll(regex)];
-      const resultado = capturas.map((captura) => ({
+      const resultados = capturas.map((captura) => ({
         href: captura[2],
         text: captura[1],
         file: caminhoArquivo,
-
       }));
-      return resultado;
+      return resultados.length !== 0 ? resultados : 'não há links no arquivo';
     })
-    .catch((erro) => manejaErro(erro));
+    .catch((erro) => tratarErro(erro));
 }
 
 function mdLink(argumentos) {
@@ -41,6 +37,12 @@ function mdLink(argumentos) {
   if (fs.lstatSync(caminho).isFile()) {
     extraiLinks(argumentos.caminho)
       .then((resultado) => {
+        if (argumentos.validate || argumentos.stats) {
+          return listaValidada(resultado);
+        }
+        return resultado;
+      })
+      .then((resultado) => {
         imprimeLista(argumentos, resultado);
       })
       .catch((e) => {
@@ -48,7 +50,6 @@ function mdLink(argumentos) {
       });
   } else if (fs.lstatSync(caminho).isDirectory()) {
     fs.promises.readdir(caminho)
-    // O then é usado para definir um callback que será executado quando a promessa for resolvida, ou seja, quando a leitura do diretório for concluída com sucesso.
       .then((arquivos) => {
         arquivos.forEach((nomeDeArquivo) => {
           extraiLinks(`${caminho}/${nomeDeArquivo}`)
