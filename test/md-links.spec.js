@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
 import { extraiLinks } from '../src/mdLinks';
-import { tratarErro } from '../src/erros';
+import { trataErro } from '../src/erros';
 
 describe('extraiLinks', () => {
   it('deveria ser uma função', () => {
@@ -23,8 +23,8 @@ describe('extraiLinks', () => {
   });
 });
 
-describe('tratarErro', () => {
+describe('trataErro', () => {
   it('deveria ser uma função', () => {
-    expect(typeof tratarErro).toBe('function');
+    expect(typeof trataErro).toBe('function');
   });
 });

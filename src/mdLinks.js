@@ -1,7 +1,7 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import { imprimeLista } from './cli.js';
-import { tratarErro } from './erros.js';
+import { trataErro } from './erros.js';
 import { listaValidada } from './validacao.js';
 
 function extraiLinks(caminhoArquivo) {
@@ -19,7 +19,7 @@ function extraiLinks(caminhoArquivo) {
       }));
       return resultados.length !== 0 ? resultados : 'não há links no arquivo';
     })
-    .catch((erro) => tratarErro(erro));
+    .catch((erro) => trataErro(erro));
 }
 
 function mdLink(argumentos) {

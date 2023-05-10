@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-import-module-exports
 import chalk from 'chalk';
-// eslint-disable-next-line import/no-cycle
-import { manejaErro } from './erros.js';
+// eslint-disable-next-line import/no-cycle, import/named
+import { manejaErros } from './erros.js';
 
 function extrairLinks(arrLinks) {
   return arrLinks.map((objetoLink) => objetoLink.href);
@@ -12,13 +12,13 @@ function checkStatus(listaURLs) {
     listaURLs.map((url) => fetch(url)
       .then((response) => {
         if (response.status === 200) {
-          return (chalk.green.bold(`${response.status} | ${'OK'}`));
+          return (chalk.green(`${response.status} | ${'OK'}`));
         } if (response.status !== 200) {
           return (chalk.red(`${response.status} | ${'FAIL'}`));
         }
         return `${response.status} - ${response.statusText}`;
       })
-      .catch((erro) => manejaErro(erro))),
+      .catch((erro) => manejaErros(erro))),
   );
   return arrStatus;
 }

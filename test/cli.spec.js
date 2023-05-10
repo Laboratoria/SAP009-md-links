@@ -3,15 +3,6 @@ import chalk from 'chalk';
 import { imprimeLista } from '../src/cli';
 
 const spyLog = jest.spyOn(global.console, 'log').mockImplementation();
-jest.mock('chalk', () => ({
-  bgBlue: jest.fn(),
-}));
-
-describe('imprimeLista', () => {
-  it('deveria ser uma função', () => {
-    expect(typeof imprimeLista).toBe('function');
-  });
-});
 
 describe('imprimeLista', () => {
   it('deve exibir a lista de resultados quando não tiver argumentos stats ou validate', () => {
@@ -36,11 +27,10 @@ describe('imprimeLista', () => {
     }, {
       file: 'arquivo3.md', href: 'http://url3.com', text: 'link3', status: 'OK',
     }];
-    chalk.bgBlue.mockImplementation((cor) => cor);
     imprimeLista(argumentos, arquivos);
     expect(spyLog).toHaveBeenCalledTimes(1);
-    expect(spyLog).toHaveBeenCalledWith(expect.stringContaining(`total: ${arquivos.length}`));
-    expect(spyLog).toHaveBeenCalledWith(expect.stringContaining('unique: 3'));
+    expect(spyLog).toHaveBeenCalledWith(expect.stringContaining(chalk.ansi256(21).bold(`Links: ${arquivos.length}`)));
+    expect(spyLog).toHaveBeenCalledWith(expect.stringContaining(chalk.ansi256(93).bold('Unique: 3')));
   });
 
   it('deve imprimir a lista de resultados validados quando o argumento validate for verdadeiro', () => {
@@ -50,16 +40,15 @@ describe('imprimeLista', () => {
     };
     const arquivos = [
       {
-        file: 'file1', href: 'https://www.example.com', text: 'example', status: 200,
+        file: 'file1', href: 'https://www.exemplo.com', text: 'exemplo', status: 200,
       },
       {
         file: 'file2', href: 'https://www.google.com', text: 'google', status: 404,
       },
     ];
-    chalk.bgBlue.mockImplementation((cor) => cor);
     imprimeLista(argumentos, arquivos);
     expect(spyLog).toHaveBeenCalledTimes(arquivos.length);
-    expect(spyLog).toHaveBeenCalledWith('file1 | https://www.example.com | example | 200');
-    expect(spyLog).toHaveBeenCalledWith('file2 | https://www.google.com | google | 404');
+    expect(spyLog).toHaveBeenCalledWith(`${chalk.yellow('file1')} | ${chalk.yellow('https://www.exemplo.com')} | ${chalk.yellow('exemplo')} | ${200}`);
+    expect(spyLog).toHaveBeenCalledWith(`${chalk.yellow('file2')} | ${chalk.yellow('https://www.google.com')} | ${chalk.yellow('google')} | ${404}`);
   });
 });

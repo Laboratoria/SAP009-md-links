@@ -6,18 +6,19 @@ function imprimeLista(argumentos, resultado) {
     const stats = calculaStats(resultado);
     console.log(
       // eslint-disable-next-line prefer-template
-      chalk.bgBlue(` total: ${stats.total} `) + '\n' + chalk.bgBlue(` unique: ${stats.unique} `) + '\n' + chalk.bgBlue(` broken: ${stats.broken} `),
+      chalk.yellow(`Total: ${stats.total}`) + '\n' + chalk.green(`Unique: ${stats.unique}`) + '\n' + chalk.red(`Broken: ${stats.broken} `),
     );
   } else if (argumentos.stats) {
     const stats = calculaStats(resultado);
     console.log(
       // eslint-disable-next-line prefer-template
-      chalk.bgBlue(` total: ${stats.total} `) + '\n' + chalk.bgBlue(` unique: ${stats.unique} `),
+      chalk.ansi256(21).bold(`Links: ${stats.total}`) + '\n' + chalk.ansi256(93).bold(`Unique: ${stats.unique}`),
     );
   } else if (argumentos.validate) {
     resultado.forEach((link) => {
       console.log(
-        chalk.bgBlue(`${link.file} | ${link.href} | ${link.text} | ${link.status}`),
+        // eslint-disable-next-line no-bitwise
+        `${chalk.yellow(link.file)} | ${chalk.yellow(link.href)} | ${chalk.yellow(link.text)} | ${link.status}`,
       );
     });
   } else {
