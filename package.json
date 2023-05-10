@@ -17,7 +17,8 @@
   "scripts": {
     "test": "jest",
     "build": "babel src -d lib",
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "eslint": "eslint --fix --ext .js src/ test/"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,9 @@
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
     "babel-jest": "^29.5.0",
-    "eslint": "^8.40.0"
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   },
   "dependencies": {
     "chalk": "^5.2.0",

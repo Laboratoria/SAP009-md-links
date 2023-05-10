@@ -10,7 +10,7 @@ Criando um texto novo para o leitor de arquivos reconhecer esse link [instagram]
 
 Bom dia! Hoje vou tomar café da manhã checando meus emails no [Gmail](https://gmail.com).
 
-[Filter](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/filtrozinho) link quebradinho
+[Filter](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/filtrozinho) link quebradinho.
 
 Vendo uns códigos no [Github](https://github.com/Stellazen/projetinho) nesse link que também não funciona.
 

@@ -1,0 +1,3 @@
+Vendo uns códigos no [Github](https://github.com/Stellazen) nesse link que funciona.
+
+O objetivo desse projeto da [Laboratória](https://www.laboratoria.la/coisaquenaoexiste) era construir do zero uma rede social. Esta rede social tinha que permitir à qualquer usuário criar uma conta de acesso, logar-se com ela, criar, editar, deletar e dar likes em publicações. O objetivo principal de aprendizagem deste projeto era contruir uma SPA (Single Page Appication) na qual fosse possível ler e escrever dados.
