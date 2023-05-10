@@ -1,12 +1,43 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "description": "MD Links - Projeto Laboratória",
+  "main": "index.js",
+  "type": "module",
   "engines": {
     "node": ">=16.x"
   },
+  "bin": {
+    "md-links": "./src/index.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:talitamsx/SAP009-md-links.git"
+  },
+  "author": "Talita Martins",
+  "license": "ISC",
   "bootcamp": {
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.5",
+    "@babel/preset-env": "^7.21.5",
+    "babel-jest": "^29.5.0",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "jes": "^0.6.1",
+    "jest": "^29.5.0"
   }
 }
