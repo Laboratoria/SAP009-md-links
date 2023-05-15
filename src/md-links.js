@@ -1,11 +1,6 @@
 import { readFile, lstatSync, readdirSync, } from 'node:fs';
 import { extname, join } from 'node:path';
 
-// função que compara e diz se é ou não um diretório
-// function eUmDiretorio(caminho){
-//     return lstatSync(caminho).isDirectory()
-// }
-
 export const isDirectory = (path) => lstatSync(path).isDirectory();
 export const isFile = (path) => lstatSync(path).isFile();
 
@@ -34,8 +29,7 @@ export const mdLinks = (caminhoDoArquivo, options) => {
   }
   // verifica se o caminho é um arquivo
   if (isFile(caminhoDoArquivo)) {
-    /* endsWith é um método de string em JavaScript que verifica
-    se uma string termina com um determinado sufixo especificado. */
+    /* endsWith => método de string que verifica se uma string termina com um determinado sufixo */
     if (!caminhoDoArquivo.endsWith('.md')) {
       console.error('O caminho especificado não se refere ao um arquivo Markdown')
     }

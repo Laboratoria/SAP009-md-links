@@ -2,8 +2,6 @@
 
 import chalk from 'chalk';
 import process, { argv } from 'node:process';
-import fetch from 'node-fetch';
-import { error } from 'node:console';
 import { mdLinks } from './md-links.js';
 
 const caminhoDoArquivo = argv[2];
@@ -18,18 +16,18 @@ if (options.validate && options.stats) {
     .then((infos) => {
       const links = infos.map((item) => item.href);
       const broken = infos.filter((item) => item.status !== 200);
-      console.log(`total:${infos.length}`);
-      console.log(`unique:${links.length}`);
-      console.log(`broken:${broken.length}`);
+      console.log(`total:${chalk.blueBright(infos.length)}`);
+      console.log(`unique:${chalk.greenBright(links.length)}`);
+      console.log(`broken:${chalk.redBright(broken.length)}`);
     }).catch((err) => {
       console.log(err);
     });
 } else if (options.stats) {
   mdLinks(caminhoDoArquivo, options)
-    .then((informacoes) => {
-      const links = informacoes.map((item) => item.href);
-      console.log(`total:${informacoes.length}`);
-      console.log(`unique:${links.length}`);
+    .then((infos) => {
+      const links = infos.map((item) => item.href);
+      console.log(`total:${chalk.blueBright(infos.length)}`);
+      console.log(`unique:${chalk.greenBright(links.length)}`);
     }).catch((err) => {
       console.log(err);
     });
@@ -38,9 +36,9 @@ if (options.validate && options.stats) {
     .then((res) => {
       res.map((item) => {
         if (item.status !== 200) {
-          console.log(`${chalk.blue(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgRed(item.message)} ${chalk.bgRedBright(item.status)}`);
+          console.log(`${chalk.magenta(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgRed(item.message)} ${chalk.bgRedBright(item.status)}`);
         } else {
-          console.log(`${chalk.blue(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgYellow(item.message)} ${chalk.bgYellowBright(item.status)}`);
+          console.log(`${chalk.magenta(item.file)} ${chalk.cyan(item.href)} ${chalk.green(item.text)} ${chalk.bgYellow(item.message)} ${chalk.bgYellowBright(item.status)}`);
         }
       });
     }).catch((err) => {
