@@ -2,6 +2,7 @@
 import mdLinks from './index.js';
 import process from 'process';
 import chalk from 'chalk';
+import stats from './stats.js';
 
 const pathFile = process.argv[2];
 
@@ -16,7 +17,7 @@ const validateFalse = (linksFormatados) => {
   })
 }
 
-const ValidateTrue = (linksFormatados) => {
+const validateTrue = (linksFormatados) => {
   linksFormatados.forEach(cadaObjeto => {
     let ok;
     let icon;
@@ -37,7 +38,7 @@ const validateStats = (linksFormatados) => {
        console.log('Total: ', objStats.total);
        console.log('Unique: ', objStats.unique);
 
-       if (process.argv[4] === '--validate') {
+       if(process.argv[4] === '--validate') {
            console.log('Broken: ', objStats.broken);
        }
    })
@@ -48,10 +49,12 @@ mdLinks(pathFile, options)
     if(options.validate === false && options.stats === false) {
         validateFalse(result);
     } else if(options.validate === true && options.stats === false) {
-        ValidateTrue(result);
+        validateTrue(result);
     } else if(options.stats) {
         validateStats(result);
-    }
+    } else {
+      console.log(`Comando inválido.`);
+  }
   })
   .catch(err => {
     console.log(err);

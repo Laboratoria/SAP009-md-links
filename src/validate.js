@@ -6,30 +6,11 @@ function validate(linksFormatados) {
             const linkValidado = {...cadaObjeto, status: response.status, ok: response.ok}
             return linkValidado;
         })
-        .catch(erro =>  ({...cadaObjeto, status: handleErrorFetch(erro), ok: false}));
-        })
-        )
+        .catch(erro =>  ({...cadaObjeto, status: (erro), ok: false}));
+    })
+  )
 }
 
-function stats(linksFormatados) {
-  return new Promise((resolve) => {
-    let hrefList = [];
-    let broken = 0;
-    linksFormatados.forEach(cadaObjeto => {
-        hrefList.push(cadaObjeto.href)
-        if(cadaObjeto.ok === false) {
-            return broken++;
-        };
-    });
-    const uniqueLinks = new Set(hrefList);
 
-    const objStats = {
-        total: hrefList.length,
-        unique: uniqueLinks.size,
-        broken: broken,
-    }
-    resolve(objStats);
-  });
-}
 
-export default {validate, stats};
+export default validate;

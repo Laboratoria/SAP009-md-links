@@ -1,7 +1,6 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import validate from './validate.js';
-import stats from './validate.js';
 
 function mdLinks(pathFile, options) {
   const fileExists = fs.existsSync(pathFile);
@@ -38,15 +37,11 @@ function mdLinks(pathFile, options) {
              resolve(linksFormatados);
             } else {
              validate(linksFormatados)
-             .then(response =>{
+             .then(response => {
               resolve(response);
              })
             } 
-            if(options.stats) {
-              resolve(stats);
-              console.log(stats);
-            }
-            }
+          }
       });
     }
   });
