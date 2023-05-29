@@ -42,6 +42,7 @@ describe('mdLinks', () => {
 
     return expect(mdLinks('text.md')).rejects.toThrow(expectedErrorMessage);
   });
+  
   test('should return an array of links when given a valid markdown file', () => {
     const expected = [
       {
@@ -55,9 +56,9 @@ describe('mdLinks', () => {
         file: '.arquivos/arquivo.md',
       },
     ];
-  });
+ 
   return mdLinks('arquivo.md', { validate: false }).then((result) => {
     expect(result).toEqual(expected);
   });
-
+ });
 });

@@ -28,7 +28,7 @@ const validateTrue = (linksFormatados) => {
       ok = chalk.red("FAIL");
       icon = chalk.red("❌");
     }
-    console.log(icon, chalk.grey(cadaObjeto.file), chalk.green(cadaObjeto.href), ok, chalk.yellow(cadaObjeto.status), chalk.grey(cadaObjeto.text));
+    console.log(icon, chalk.grey(cadaObjeto.file), chalk.white(cadaObjeto.href), ok, chalk.yellow(cadaObjeto.status), chalk.grey(cadaObjeto.text));
   })
 }
 
