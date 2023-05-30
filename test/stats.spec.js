@@ -1,4 +1,4 @@
-import stats from './stats.js';
+import stats from '../src/stats';
 
 describe('stats', () => {
   it('calculates statistics correctly', () => {
@@ -19,7 +19,7 @@ describe('stats', () => {
 
     const resolveMock = jest.fn();
     const promiseMock = jest.fn(() => ({ resolve: resolveMock }));
-    const setMock = jest.fn(() => linksFormatados.map(obj => obj.href));
+    const setMock = jest.fn(() => linksFormatados.map((obj) => obj.href));
 
     global.Set = setMock;
     global.Promise = promiseMock;
@@ -27,7 +27,7 @@ describe('stats', () => {
     stats(linksFormatados);
 
     expect(promiseMock).toHaveBeenCalledWith(expect.any(Function));
-    expect(setMock).toHaveBeenCalledWith(linksFormatados.map(obj => obj.href));
+    expect(setMock).toHaveBeenCalledWith(linksFormatados.map((obj) => obj.href));
 
     const resolveCallback = promiseMock.mock.calls[0][0];
 
