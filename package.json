@@ -19,19 +19,26 @@
   "dependencies": {
     "babel": "^6.23.0",
     "babel-jest": "^29.5.0",
+    "babel-plugin": "^1.0.7",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "chalk": "^4.1.2",
     "cli-table": "^0.3.11",
+    "eslint-config-airbnb": "^19.0.4",
+    "fetch-mock": "^9.11.0",
     "table": "^6.8.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/node": "^7.22.1",
     "@babel/preset-env": "^7.21.5",
     "eslint": "^8.40.0",
+    "eslint-plugin-jest": "^27.2.1",
     "jest": "^29.5.0"
   },
   "scripts": {
     "lint": "npx eslint --ext .js src/",
     "test": "jest",
-    "pretest": "npm run eslint"
+    "pretest": "npm run lint"
   },
   "description": "* [1. Prefácio](#1-prefácio)\r * [2. Resumo do projeto](#2-resumo-do-projeto)\r * [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)\r * [4. Considerações gerais](#4-considerações-gerais)\r * [5. Critérios de aceitação mínimos do projeto](#5-criterios-de-aceitação-mínimos-do-projeto)\r * [6. Entregáveis](#6-entregáveis)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Guias, dicas e leituras complementares](#8-guias-dicas-e-leituras-complementares)\r * [9. Checklist](#9-checklist)\r * [10. Dividindo o problema - babies steps](#10-dividindo-o-problema)",
   "directories": {
