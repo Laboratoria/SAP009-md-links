@@ -14,12 +14,15 @@
   "directories": {
     "test": "test"
   },
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tharla",
   "license": "MIT",
+  "bin":{
+    "mdLinks":"cli.js"
+  },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.22.1",
