@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-
 const mdLinks = require("./index.js")
-
-    mdLinks('./files/text.md')
+const caminhoDoarquivo = process.argv[2]
+const precisaValidar = process.argv.includes('--validate')
+    mdLinks(caminhoDoarquivo,precisaValidar)
     .then((content) => {
       
       console.log(content);

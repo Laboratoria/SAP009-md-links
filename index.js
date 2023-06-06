@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-function readMarkdownFile(filePath) {
+function readMarkdownFile(filePath,precisaValidar) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (error, data) => {
       if (error) {
@@ -23,8 +23,11 @@ function readMarkdownFile(filePath) {
             result.push(item);
           }
         }
-
+      if (precisaValidar) {
+        console.log('opa precisa validar')
+      } else{
         resolve(result);
+      }
       }
     });
   });
