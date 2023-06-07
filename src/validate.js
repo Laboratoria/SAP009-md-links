@@ -5,7 +5,7 @@ function validate(linksFormatados) {
         const linkValidado = { ...cadaObjeto, status: response.status, ok: response.ok };
         return linkValidado;
       })
-      .catch((erro) => ({ ...cadaObjeto, status: (erro), ok: false }))),
+      .catch((erro) => ({ ...cadaObjeto, status: (erro.cause.code), ok: false }))),
   );
 }
 
