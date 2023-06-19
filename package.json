@@ -1,6 +1,10 @@
 {
-  "name": "md-links",
+  "name": "md-links-brusilveira",
+  "author": "Bruna Silveira",
+  "license": "ISC",
   "version": "0.1.0",
+  "main": "index.js",
+  "type": "module",
   "engines": {
     "node": ">=16.x"
   },
@@ -8,5 +12,32 @@
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
     "commit": "ffa75c8b2bede153844195479abeff01f3e34227"
-  }
+  },
+  "bin": {
+    "md-links": "./src/cli.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-table": "^0.3.11",
+    "eslint-config-airbnb": "^19.0.4",
+    "fetch-mock": "^9.11.0",
+    "table": "^6.8.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.4",
+    "eslint": "^8.40.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^29.5.0"
+  },
+  "scripts": {
+    "build": "",
+    "lint": "npx eslint --ext .js src/",
+    "test": "jest --coverage",
+    "pretest": "npm run lint"
+  },
+  "description": "* [1. Prefácio](#1-prefácio)\r * [2. Resumo do projeto](#2-resumo-do-projeto)\r * [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)\r * [4. Considerações gerais](#4-considerações-gerais)\r * [5. Critérios de aceitação mínimos do projeto](#5-criterios-de-aceitação-mínimos-do-projeto)\r * [6. Entregáveis](#6-entregáveis)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Guias, dicas e leituras complementares](#8-guias-dicas-e-leituras-complementares)\r * [9. Checklist](#9-checklist)\r * [10. Dividindo o problema - babies steps](#10-dividindo-o-problema)",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": []
 }
